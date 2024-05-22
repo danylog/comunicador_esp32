@@ -1,7 +1,11 @@
+/*
+Copyright © 2024, Danylo Galytskyy
+ALL RIGHTS RESERVED
+*/
+
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SH1106.h>
-#include <Adafruit_NeoPixel.h>
 #include <Adafruit_NeoMatrix.h>
 #include <GyverButton.h>
 
