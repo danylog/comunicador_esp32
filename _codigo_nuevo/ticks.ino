@@ -7,4 +7,5 @@ void ticks(){
   b_record.tick();
   b_power.tick();
   b_paint.tick();
+  enc.tick();
 }

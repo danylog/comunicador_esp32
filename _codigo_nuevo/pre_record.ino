@@ -7,5 +7,5 @@ void pre_record() {
     // Aquí pondrías tu función de grabar pantalla
     delay(1000);          // Simulación de grabación, sustitúyelo por tu lógica de grabación real
     state = SELECT_STATE;  // Vuelve al estado inicial después de grabar
-  if(b_record.isPress()) state=RECORD_STATE;
+  if(b_record.press()) state=RECORD_STATE;
 }

@@ -7,16 +7,18 @@ ALL RIGHTS RESERVED
 #include <Adafruit_GFX.h>
 #include <Adafruit_SH1106.h>
 #include <Adafruit_NeoMatrix.h>
-#include <GyverButton.h>
+#include <EncButton.h>
 
-GButton b_up(4);
-GButton b_down(7);
-GButton b_left(8);
-GButton b_right(2);
-GButton b_ok(3);
-GButton b_record(13);
-GButton b_power(5);
-GButton b_paint(12);
+Button b_up(34);
+Button b_down(35);
+Button b_left(36);
+Button b_right(39);
+Button b_ok(32);
+Button b_record(23);
+Button b_power(25);
+Button b_paint(26);
+
+EncButton enc(5, 18, 19);
 
 #define MAX_LED_PRESSES 10         // Número máximo de LEDs que se pueden encender al presionar BOTON_COLOR
 int led_presses[MAX_LED_PRESSES];  // Array para almacenar las posiciones de las LEDs donde se ha presionado el botón
@@ -29,41 +31,17 @@ int num_led_presses = 0;           // Número actual de LEDs presionados
 #define PATTERN_STATE 3
 #define PAUSE_STATE 4
 
-#define SELECTION_PIN 3
-#define PIN 9
-#define NUMPIXELS 64        // Número total de LEDs en la matriz (8x8)
-#define BOTON_ANIMACION 13  // Pin al que está conectado el botón para encender
-#define BOTON_COLOR 12      // Pin al que está conectado el botón para cambiar el color de la LED
+Adafruit_SH1106 display(21,22);
 
-
-#define BOTON_R 2  // Pin al que está conectado el botón derecha
-#define BOTON_U 4  // Pin al que está conectado el botón arriba
-#define BOTON_D 7  // Pin al que está conectado el botón abajo
-#define BOTON_L 8  // Pin al que está conectado el botón izquierdo
-
-#define SCREEN_WIDTH 128     // Ancho de la pantalla OLED en píxeles
-#define SCREEN_HEIGHT 64     // Alto de la pantalla OLED en píxeles
-#define OLED_RESET -1        // Pin de reinicio (reset) no conectado
-#define SCREEN_ADDRESS 0x3C  // Dirección I2C de la pantalla OLED (puede variar)
-
-#define ROTARY_PIN1 14  // Pin de señal A del encoder rotativo
-#define ROTARY_PIN2 15  // Pin de señal B del encoder rotativo
-#define ON_OFF_PIN 5    // Pin para activar/desactivar
-
-Adafruit_SH1106 display(21,23);
-
-Adafruit_NeoMatrix matrix = Adafruit_NeoMatrix(8, 8, PIN,
+Adafruit_NeoMatrix matrix = Adafruit_NeoMatrix(8, 8, 23,
   NEO_MATRIX_TOP     + NEO_MATRIX_RIGHT +
   NEO_MATRIX_COLUMNS + NEO_MATRIX_PROGRESSIVE,
   NEO_GRB            + NEO_KHZ800);
 
-int led_index = 0;  // Reiniciar el índice de la LED
-int state = SELECT_STATE;
+int state = PAUSE_STATE;
 int fraseIndex = 0;
 
 bool active = false;
-int lastState = LOW;
-
 
 const int numFrases = 10;
 const char *frases[numFrases] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
@@ -76,14 +54,7 @@ void setup() {
   display.display();
   display.setTextSize(4);
   display.setTextColor(WHITE);
-  pinMode(ON_OFF_PIN, INPUT_PULLUP);
-  pinMode(SELECTION_PIN, INPUT_PULLUP);
-  pinMode(BOTON_ANIMACION, INPUT_PULLUP);  // Configura el pin del botón de animación como entrada con pull-up
-  pinMode(BOTON_R, INPUT_PULLUP);
-  pinMode(BOTON_U, INPUT_PULLUP);
-  pinMode(BOTON_D, INPUT_PULLUP);
-  pinMode(BOTON_L, INPUT_PULLUP);
-  pinMode(BOTON_COLOR, INPUT_PULLUP);
+
 
   matrix.begin();  
   matrix.fillScreen(0);
@@ -95,7 +66,7 @@ void setup() {
 void loop() {
 ticks();
 
-  if (b_power.isClick()) {
+  if (b_power.click()) {
     active = !active;
     delay(250);
     state = PAUSE_STATE;
