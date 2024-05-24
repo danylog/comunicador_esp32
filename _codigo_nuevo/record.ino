@@ -11,7 +11,7 @@ void record() {
     for (int i = 0; i < 8; i++) {
       for (int a = 0; a < 8; a++) {
         int red = random(2) * 200;
-        matrix.drawPixel(i, a, matrix.Color(255, 0, 0));
+        matrix.drawPixel(i, a, matrix.Color(red, 0, 0));
       }
     }
     matrix.show();

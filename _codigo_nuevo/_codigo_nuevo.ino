@@ -2,7 +2,7 @@
 Copyright © 2024, Danylo Galytskyy
 ALL RIGHTS RESERVED
 */
-
+#include <esp_task_wdt.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SH1106.h>
@@ -14,16 +14,11 @@ Button b_down(35);
 Button b_left(36);
 Button b_right(39);
 Button b_ok(32);
-Button b_record(23);
+Button b_record(33);
 Button b_power(25);
 Button b_paint(26);
 
 EncButton enc(5, 18, 19);
-
-#define MAX_LED_PRESSES 10         // Número máximo de LEDs que se pueden encender al presionar BOTON_COLOR
-int led_presses[MAX_LED_PRESSES];  // Array para almacenar las posiciones de las LEDs donde se ha presionado el botón
-int num_led_presses = 0;           // Número actual de LEDs presionados
-
 
 #define SELECT_STATE 0
 #define PRE_RECORD_STATE 1
@@ -48,28 +43,32 @@ const char *frases[numFrases] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "
 
 void setup() {
   Serial.begin(9600);
+   esp_task_wdt_init(20, true);
   Wire.begin();
   display.begin(SH1106_SWITCHCAPVCC, 0x3C);
   display.clearDisplay();
-  display.display();
+  
   display.setTextSize(4);
   display.setTextColor(WHITE);
-
+  display.print("helo");
+display.display();
 
   matrix.begin();  
   matrix.fillScreen(0);
   matrix.setBrightness(20);
-  matrix.drawPixel(0,0, matrix.Color(255, 255, 255));  // Encender la LED inicialmente
+  matrix.drawPixel(0,0, matrix.Color(255, 0, 255));  // Encender la LED inicialmente
   matrix.show();
 }
 
 void loop() {
+  esp_task_wdt_reset();
 ticks();
 
   if (b_power.click()) {
     active = !active;
     delay(250);
     state = PAUSE_STATE;
+
   }
 
   if (active) {
