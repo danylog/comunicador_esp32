@@ -6,6 +6,7 @@ void ticks(){
   b_ok.tick();
   b_record.tick();
   b_power.tick();
+  b_send.tick();
   b_paint.tick();
   enc.tick();
 }

@@ -13,7 +13,6 @@ void select_room() {
   display.setCursor(x, y);
   display.println(frases[fraseIndex]);
   display.display();
-  delay(100);
 
 if (b_ok.click()) state = PRE_RECORD_STATE;
 }

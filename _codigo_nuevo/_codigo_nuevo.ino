@@ -2,6 +2,7 @@
 Copyright © 2024, Danylo Galytskyy
 ALL RIGHTS RESERVED
 */
+#include <esp_now.h>
 #include <esp_task_wdt.h>
 #include <Wire.h>
 #include <Adafruit_GFX.h>
@@ -17,10 +18,12 @@ Button b_ok(32);
 Button b_record(33);
 Button b_power(25);
 Button b_paint(26);
+Button b_send(14);
 
 EncButton enc(5, 18, 19);
 
 #define SELECT_STATE 0
+#define SHOW_PATTERN_STATE 5
 #define PRE_RECORD_STATE 1
 #define RECORD_STATE 2
 #define PATTERN_STATE 3
@@ -37,6 +40,7 @@ int state = PAUSE_STATE;
 int fraseIndex = 0;
 
 bool active = false;
+byte unreadMessages = 0;
 
 const int numFrases = 10;
 const char *frases[numFrases] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
@@ -75,6 +79,9 @@ ticks();
     switch (state) {
       case PAUSE_STATE:
         pause_screen();
+        break;
+      case SHOW_PATTERN_STATE:
+        show_pattern();
         break;
       case SELECT_STATE:
         select_room();
