@@ -20,4 +20,9 @@ Schematic:
 
 <img width="1016" alt="Screenshot 2024-05-27 at 12 06 30" src="https://github.com/danylog/comunicador_esp32/assets/36711786/038bc490-cd04-4355-b3ce-ba71ebbb2344">
 
-
+Instructions:
+* upload "mac_adress_visualizer" sketch on one device
+* open Serial port on 9600 baud
+* copy the mac address
+* put it in the other device’s "_codigo-nuevo.ino" using the format provided: for example **E0:5A:1B:D2:D7:D8** becomes **uint8_t broadcastAddress[] = { 0xE0, 0x5A, 0x1B, 0xD2, 0xD7, 0xD8 };**
+* repeat the same process with the other device
