@@ -8,5 +8,4 @@ void ticks(){
   b_power.tick();
   b_send.tick();
   b_paint.tick();
-  enc.tick();
 }
