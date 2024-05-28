@@ -15,6 +15,7 @@ Libraries used:
 
 * Encoder: https://github.com/madhephaestus/ESP32Encoder
 
+* IO: https://github.com/GyverLibs/GyverIO
 
 Schematic:
 
@@ -26,3 +27,4 @@ Instructions:
 * copy the mac address
 * put it in the other device’s "_codigo-nuevo.ino" line 17 using the format provided: for example **E0:5A:1B:D2:D7:D8** becomes **uint8_t broadcastAddress[] = { 0xE0, 0x5A, 0x1B, 0xD2, 0xD7, 0xD8 };**
 * repeat the same process with the other device
+
