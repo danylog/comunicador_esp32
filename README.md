@@ -17,6 +17,8 @@ Libraries used:
 
 * IO: https://github.com/GyverLibs/GyverIO
 
+* esp: https://github.com/pycom/esp-idf-2.0/tree/master
+
 Schematic:
 
 <img width="1016" alt="Screenshot 2024-05-27 at 12 06 30" src="https://github.com/danylog/comunicador_esp32/assets/36711786/038bc490-cd04-4355-b3ce-ba71ebbb2344">
