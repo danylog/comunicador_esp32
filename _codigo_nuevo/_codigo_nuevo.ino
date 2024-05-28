@@ -12,15 +12,15 @@ ALL RIGHTS RESERVED
 #include <Adafruit_NeoMatrix.h>
 #include <EncButton.h>
 #include <ESP32Encoder.h>
-//40:22:D8:E7:43:90
-//E0:5A:1B:D2:D7:D8
-uint8_t broadcastAddress[] = { 0xE0, 0x5A, 0x1B, 0xD2, 0xD7, 0xD8 };
-//uint8_t broadcastAddress[] = { 0x40, 0x22, 0xD8, 0xE7, 0x43, 0x90 };
+//D4:8A:FC:A2:E9:AC
+//A8:42:E3:AB:26:C4
+uint8_t broadcastAddress[] = { 0xD4, 0x8A, 0xFC, 0xA2, 0xE9, 0xAC };
+//uint8_t broadcastAddress[] = { 0xA8, 0x42, 0xE3, 0xAB, 0x26, 0xC4 };
   int flag = 0;
-Button b_up(34);
-Button b_down(35);
-Button b_left(36);
-Button b_right(39);
+Button b_up(4);
+Button b_down(0);
+Button b_left(2);
+Button b_right(15);
 Button b_ok(32);
 Button b_record(14);
 Button b_power(25);

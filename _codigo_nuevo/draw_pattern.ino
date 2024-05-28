@@ -1,7 +1,7 @@
 void draw_pattern() {
 
 
-
+matrix.fillScreen(0);
   matrix.drawBitmap(0, 0, dp, 8, 8, matrix.Color(255, 0, 255));
   matrix.drawPixel(x, y, matrix.Color(255, 255, 255));
   matrix.show();
@@ -32,13 +32,13 @@ void draw_pattern() {
     matrix.show();
   }
 
-  if (b_paint.click()) {
+  if (b_ok.click()) {
     painted = !painted;
     setBit(dp, 7 - x, y, !getBit(dp, 7 - x, y));
     matrix.fillScreen(0);
   }
 
-  if (b_ok.click()) {
+  if (b_paint.click()) {
 
     matrix.fillScreen(0);
     matrix.show();
@@ -47,11 +47,7 @@ void draw_pattern() {
       unreadMessages--;
     } else {
       state = WRONG_PATTERN_STATE;
-
-      for (int i = 0; i < 8;i++) {
-        dp[i] = 0;
-      }
       matrix.show();
-    }
+    }      
   }
 }

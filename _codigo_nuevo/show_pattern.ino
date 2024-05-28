@@ -17,8 +17,15 @@ delay(1000);
 matrix.fillScreen(0);
 matrix.show();
 state=DRAW_PATTERN_STATE;
+    for(int a=0; a<8; a++){
+    for (int i = 0; i < 8;i++) {
+        setBit(dp, a, i, 0);
+       }
+    }
   display.clearDisplay();
   display.setCursor(0, 0);
-  display.print("Dibuja el patron");
+  display.print("Dibuja el patron.    Pulsa ");
+      display.write(0x1f);
+      display.print(" para validar");
   display.display();
 }
