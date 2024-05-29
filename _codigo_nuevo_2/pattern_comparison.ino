@@ -38,7 +38,6 @@ delay(5000);
 state=PAUSE_STATE;
 }
 void wrong_pattern(){
-
 display.clearDisplay();
 display.setCursor(0,0);
 display.println("Patron incorrecto!");

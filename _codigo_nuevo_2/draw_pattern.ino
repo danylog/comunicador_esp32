@@ -42,7 +42,7 @@ matrix.fillScreen(0);
 
     matrix.fillScreen(0);
     matrix.show();
-    if (comparePattern(patterns[0], dp)) {
+    if (comparePattern(patterns[incomingMessage], dp)) {
       state = CORRECT_PATTERN_STATE;
       unreadMessages--;
     } else {

@@ -12,7 +12,7 @@ display.display();
     delay(50);
     matrix.fillScreen(0);
   }
-  pattern_selected = 0;//random(6);
+  pattern_selected = random(6);
   Serial.println(pattern_selected);
 
   matrix.drawBitmap(0, 0, patterns[pattern_selected], 8, 8, matrix.Color(255, 0, 255));
