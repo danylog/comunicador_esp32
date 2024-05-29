@@ -17,9 +17,7 @@ Libraries used:
 
 * IO: https://github.com/GyverLibs/GyverIO
 
-* esp: https://github.com/pycom/esp-idf-2.0/tree/master
-
-* esp-now: https://github.com/espressif/esp-now
+* https://github.com/adafruit/Adafruit_BusIO
 
 Schematic:
 
