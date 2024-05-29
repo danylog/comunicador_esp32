@@ -21,7 +21,7 @@ Libraries used:
 
 Schematic:
 
-<img width="1016" alt="Screenshot 2024-05-27 at 12 06 30" src="https://github.com/danylog/comunicador_esp32/assets/36711786/038bc490-cd04-4355-b3ce-ba71ebbb2344">
+<img width="839" alt="Screenshot 2024-05-29 at 12 45 10" src="https://github.com/danylog/comunicador_esp32/assets/36711786/cbbce6a4-33f0-452b-bf99-8c7a9f282911">
 
 Instructions:
 * upload "mac_adress_visualizer" sketch on one device
