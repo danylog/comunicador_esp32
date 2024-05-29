@@ -12,6 +12,8 @@ ALL RIGHTS RESERVED
 #include <Adafruit_NeoMatrix.h>
 #include <EncButton.h>
 #include <ESP32Encoder.h>
+#define EB_DEB_TIME 20 
+#define EB_CLICK_TIME 50 
 //D4:8A:FC:A2:E9:AC
 //A8:42:E3:AB:26:C4
 //uint8_t broadcastAddress[] = { 0xD4, 0x8A, 0xFC, 0xA2, 0xE9, 0xAC };
